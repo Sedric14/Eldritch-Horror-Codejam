@@ -1,14 +1,18 @@
 import deck from './deck.js';
 
-
-// import ancients from "./assets/Ancients";
 const ancientsList = document.querySelector('.ancientsContainer');
-// const mainContainer = document.querySelector('main')
 const buttonsLevel = document.querySelectorAll('.btnLevel')
 const deckContainer = document.querySelector('.deckContainer')
-// const anc = ancients;
+const fsGreen = document.querySelector('.fsGreen');
+const ssGreen = document.querySelector('.ssGreen');
+const tsGreen = document.querySelector('.tsGreen');
+const fsBlue = document.querySelector('.fsBlue');
+const ssBlue = document.querySelector('.ssBlue');
+const tsBlue = document.querySelector('.tsBlue');
+const fsBrown = document.querySelector('.fsBrown');
+const ssBrown = document.querySelector('.ssBrown');
+const tsBrown = document.querySelector('.tsBrown');
 
-// console.log(ancients)
 const links = 'links.json';
 let idAncient = {};
 let level = "";
@@ -45,7 +49,8 @@ async function createAncientList() {
             for (let k = 0; k < 4; k++) {
                 const listChild = ancientsList.childNodes;
                 
-                if (i === k) {console.log("ancients")
+                if (i === k) {
+                    // console.log("ancients")
                     divItem.classList.add('ancCardSelect')
                     idAncient = data.ancients[i];
                     ancientsList.style.height = "0px"
@@ -75,7 +80,7 @@ function buildCardDeck(){
     switch (level) {
         case "Very Easy":
             if (blueCards > 4) {
-                mydeck.blueCardsData[0].forEach(card => { general.push(card) })
+                mydeck.blueCardsData[0].forEach(card => { general[0].push(card) })
                 let n = (blueCards - 4);
                 let bj = 4;
                 for (let i = 0; i < n; i++) {
@@ -87,7 +92,7 @@ function buildCardDeck(){
             } else {
                 let bj = 4;
                 for (let i = 0; i < blueCards; i++) {
-                    console.log('blC = ' + blueCards);
+                    // console.log('blC = ' + blueCards);
                     let c = getRandomNum(bj)
                     general[0].push(mydeck.blueCardsData[0][c]);
                     mydeck.blueCardsData[0].splice(c, 1)
@@ -96,7 +101,7 @@ function buildCardDeck(){
             }
 
             if (brownCards > 5) {
-                mydeck.brownCardsData[0].forEach(card => { general.push(card) })
+                mydeck.brownCardsData[0].forEach(card => { general[1].push(card) })
                 let n = (brownCards - 5);
                 let hj = 11;
                 for (let i = 0; i < n; i++) {
@@ -116,7 +121,7 @@ function buildCardDeck(){
             }
 
             if (greenCards > 5) {
-                mydeck.greenCardsData[0].forEach(card => { general.push(card) })
+                mydeck.greenCardsData[0].forEach(card => { general[2].push(card) })
                 let n = (greenCards - 5);
                 let gj = 8;
                 for (let i = 0; i < n; i++) {
@@ -134,6 +139,7 @@ function buildCardDeck(){
                     gj--;
                 }
             }
+            // console.log(general);
             break;
 
         case 'Easy':
@@ -225,7 +231,7 @@ function buildCardDeck(){
 
         case "Very Hard":
             if (blueCards > 4) {
-                mydeck.blueCardsData[2].forEach(card => { general.push(card) })
+                mydeck.blueCardsData[2].forEach(card => { general[0].push(card) })
                 let n = (blueCards - 4);
                 let bj = 4;
                 for (let i = 0; i < n; i++) {
@@ -245,7 +251,7 @@ function buildCardDeck(){
             }
 
             if (brownCards > 5) {
-                mydeck.brownCardsData[2].forEach(card => { general.push(card) })
+                mydeck.brownCardsData[2].forEach(card => { general[1].push(card) })
                 let n = (brownCards - 5);
                 let hj = 11;
                 for (let i = 0; i < n; i++) {
@@ -265,7 +271,7 @@ function buildCardDeck(){
             }
 
             if (greenCards > 5) {
-                mydeck.greenCardsData[2].forEach(card => { general.push(card) })
+                mydeck.greenCardsData[2].forEach(card => { general[2].push(card) })
                 let n = (greenCards - 5);
                 let gj = 8;
                 for (let i = 0; i < n; i++) {
@@ -285,54 +291,69 @@ function buildCardDeck(){
             }
             break;
     }
-    console.log(idAncient);
-    console.log(general);
+    // console.log(idAncient);
+    // console.log(general);
     let finalArr = [[], [], []];
     let first = idAncient.firstStage.blueCards;
     let second = idAncient.secondStage.blueCards;
     let third = idAncient.thirdStage.blueCards;
-    general[0].forEach(el => {
-       if (first !== 0){ 
-         finalArr[0].push(el)
-         first --;
-    } else if(second!==0){
-        finalArr[1].push(el)
-        second --;
-    }else{
-        finalArr[2].push(el)
-        third --;
+    let lengthGeneral = general[0].length;
+    for (let i = 0; i < lengthGeneral; i++) {
+        let ind = getRandomNum(general[0].length)
+        if (first !== 0) {
+            finalArr[0].push(general[0][ind])
+            general[0].splice(ind, 1)
+            first--;
+        } else if (second !== 0) {
+            finalArr[1].push(general[0][ind])
+            general[0].splice(ind, 1)
+            second--;
+        } else {
+            finalArr[2].push(general[0][ind])
+            general[0].splice(ind, 1)
+            third--;
+        }
     }
-    })
     first = idAncient.firstStage.brownCards;
     second = idAncient.secondStage.brownCards;
     third = idAncient.thirdStage.brownCards;
-    general[1].forEach(el => {
-        if (first !== 0){ 
-          finalArr[0].push(el)
-          first --;
-     } else if(second!==0){
-         finalArr[1].push(el)
-         second --;
-     }else{
-         finalArr[2].push(el)
-         third --;
-     }
-     })
+    lengthGeneral = general[1].length;
+    for (let i = 0; i < lengthGeneral; i++) {
+        let ind = getRandomNum(general[1].length)
+        if (first !== 0) {
+            finalArr[0].push(general[1][ind])
+            general[1].splice(ind, 1)
+            first--;
+        } else if (second !== 0) {
+            finalArr[1].push(general[1][ind])
+            general[0].splice(ind, 1)
+            second--;
+        } else {
+            finalArr[2].push(general[1][ind])
+            general[1].splice(ind, 1)
+            third--;
+        }
+    }
      first = idAncient.firstStage.greenCards;
     second = idAncient.secondStage.greenCards;
     third = idAncient.thirdStage.greenCards;
-    general[2].forEach(el => {
-        if (first !== 0){ 
-          finalArr[0].push(el)
-          first --;
-     } else if(second!==0){
-         finalArr[1].push(el)
-         second --;
-     }else{
-         finalArr[2].push(el)
-         third --;
-     }
-     })
+    lengthGeneral = general[2].length;
+    for (let i = 0; i < lengthGeneral; i++) {
+        let ind = getRandomNum(general[2].length)
+        if (first !== 0) {
+            finalArr[0].push(general[2][ind])
+            general[2].splice(ind, 1)
+            first--;
+        } else if (second !== 0) {
+            finalArr[1].push(general[2][ind])
+            general[2].splice(ind, 1)
+            second--;
+        } else {
+            finalArr[2].push(general[2][ind])
+            general[2].splice(ind, 1)
+            third--;
+        }
+    }
      console.log(finalArr);
      return finalArr;
 }
@@ -343,7 +364,51 @@ function createDeck(){
         const cardBack = document.createElement('div');
         cardBack.classList.add('cardsShirt');
         deckContainer.append(cardBack);
-        cardBack.style.transform = "translate(" + (i*1.5) + "px, " + (-i*1.5) + "px)"
+        cardBack.style.transform = "translate(" + (i * 1.5) + "px, " + (-i * 1.5) + "px)";
+        cardBack.addEventListener('click', ()=> {layingOutCards(i)});
     }
+    fsBlue.innerHTML = idAncient.firstStage.blueCards;
+    ssBlue.innerHTML = idAncient.secondStage.blueCards;
+    tsBlue.innerHTML = idAncient.thirdStage.blueCards;
+    fsBrown.innerHTML = idAncient.firstStage.brownCards;
+    ssBrown.innerHTML = idAncient.secondStage.brownCards;
+    tsBrown.innerHTML = idAncient.thirdStage.brownCards;
+    fsGreen.innerHTML = idAncient.firstStage.greenCards;
+    ssGreen.innerHTML = idAncient.secondStage.greenCards;
+    tsGreen.innerHTML = idAncient.thirdStage.greenCards;
+}
 
+function layingOutCards(index){
+    // console.log(deckArr);
+    let cardItems = deckContainer.childNodes;
+    cardItems[index].style.transform = "translate(" + (-10 - (index*3.5)) + "vw, 40vh)"
+    cardItems[index].style.zIndex = "" + (0-index) + "";
+            if (deckArr[0].length !== 0) {
+                let rand = getRandomNum(deckArr[0].length)
+                cardItems[index].style.backgroundImage = deckArr[0][rand].cardFace;
+                if( deckArr[0][rand].color === 'blue') fsBlue.innerHTML = (fsBlue.innerHTML - 1);
+                if( deckArr[0][rand].color === 'green') fsGreen.innerHTML = (fsGreen.innerHTML - 1);
+                if( deckArr[0][rand].color === 'brown') fsBrown.innerHTML = (fsBrown.innerHTML - 1);
+                // changeTracker(0, deckArr[0][rand].color)
+                deckArr[0].splice(rand, 1)
+                // console.log(deckArr[0]);
+            }else if(deckArr[1].length !== 0){
+                let rand = getRandomNum(deckArr[1].length)
+                cardItems[index].style.backgroundImage = deckArr[1][rand].cardFace;
+                if( deckArr[1][rand].color === 'blue') ssBlue.innerHTML = (ssBlue.innerHTML - 1);
+                if( deckArr[1][rand].color === 'green') ssGreen.innerHTML = (ssGreen.innerHTML - 1);
+                if( deckArr[1][rand].color === 'brown') ssBrown.innerHTML = (ssBrown.innerHTML - 1);
+                deckArr[1].splice(rand, 1)
+            }else{
+                let rand = getRandomNum(deckArr[2].length)
+                cardItems[index].style.backgroundImage = deckArr[2][rand].cardFace;
+                if( deckArr[2][rand].color === 'blue') tsBlue.innerHTML = (tsBlue.innerHTML - 1);
+                if( deckArr[2][rand].color === 'green') tsGreen.innerHTML = (tsGreen.innerHTML - 1);
+                if( deckArr[2][rand].color === 'brown') tsBrown.innerHTML = (tsBrown.innerHTML - 1);
+                deckArr[2].splice(rand, 1)
+            }
+}
+
+function changeTracker(stage, color){
+if(stage === 0 && color === blue) fsBlue.innerHTML = fsBlue.innerHTML - 1;
 }

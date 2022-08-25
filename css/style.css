@@ -4,7 +4,7 @@ body{
 }
 
 main{
-    background-color: rgba(255, 255, 255, 0.432);
+    /* background-color: rgba(255, 255, 255, 0.432); */
     height: 83vh;
 }
 
@@ -45,7 +45,7 @@ main{
     right: 0%;
     width: 200px;
     height: 260px;
-    background-color: #fff;
+    /* background-color: #fff; */
     /* transform: s; */
 }
 
@@ -63,6 +63,62 @@ main{
     border-left: rgb(129, 129, 129) solid 1px;
     border-bottom: rgb(128, 128, 128) solid 1px;
     /* background-color: rgb(167, 42, 42); */
+}
+/* 
+.cardFace{
+    transform: translate(-80px);
+} */
+
+.trecker{
+    position: absolute;
+    top: 5vh;
+    left: 35vw;
+    width: 30vw;
+    height: 30vh;
+    background-color: rgba(0, 0, 0, 0.466);
+    border-radius: 10px;
+    color: #fff;
+}
+
+.firstStage, .secondStage, .thirdStage{
+    display: flex;
+    flex-direction: row;
+    margin: 2%;
+    width: 91%;
+    height: 26%;
+    padding-left: 5%;
+    background-color: rgba(255, 255, 255, 0.39);
+    justify-content: space-between;
+}
+
+.colorContainer{
+    display: flex;
+    width: 20vw;
+    align-items: center;
+    margin-right: 5%;
+    justify-content: space-around;
+}
+
+.fsBlue, .ssBlue, .tsBlue{
+    background-color: blue;
+}
+
+.fsGreen, .ssGreen, .tsGreen{
+    background-color: green;
+}
+
+.fsBrown, .ssBrown, .tsBrown{
+    background-color: brown;
+}
+
+.colorContainer div{
+    width: 35px;
+    height: 35px;
+    border-radius: 7px;
+    text-align: center;
+    font-size: 32px;
+    padding: 5px;
+    /* margin: 25px; */
 }
 
 footer{
