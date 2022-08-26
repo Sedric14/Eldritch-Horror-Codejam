@@ -12,6 +12,8 @@ const tsBlue = document.querySelector('.tsBlue');
 const fsBrown = document.querySelector('.fsBrown');
 const ssBrown = document.querySelector('.ssBrown');
 const tsBrown = document.querySelector('.tsBrown');
+const btnLevelHide = document.querySelector('.btnLevelHide');
+const trecker = document.querySelector('.trecker');
 
 const links = 'links.json';
 let idAncient = {};
@@ -26,10 +28,12 @@ for (let it = 0; it < buttonsLevel.length; it++) {
             buttonsLevel[it].style.color = 'red'
             deckArr = buildCardDeck();
             createDeck();
+            trecker.style.opacity = "1"
         }
         else {
             alert("Выберите древнего")
          }
+         btnLevelHide.style.zIndex ="1"
     })
 }
 
@@ -59,6 +63,7 @@ async function createAncientList() {
                     child.style.display ="none"
                 }
             }
+            btnLevelHide.style.zIndex = "-1"
         })
     }
     
@@ -101,7 +106,7 @@ function buildCardDeck(){
             }
 
             if (brownCards > 5) {
-                mydeck.brownCardsData[0].forEach(card => { general[1].push(card) })
+                mydeck.brownCardsData[0].forEach(card => { general[1].push(card)})
                 let n = (brownCards - 5);
                 let hj = 11;
                 for (let i = 0; i < n; i++) {
@@ -354,7 +359,6 @@ function buildCardDeck(){
             third--;
         }
     }
-     console.log(finalArr);
      return finalArr;
 }
 
@@ -364,7 +368,7 @@ function createDeck(){
         const cardBack = document.createElement('div');
         cardBack.classList.add('cardsShirt');
         deckContainer.append(cardBack);
-        cardBack.style.transform = "translate(" + (i * 1.5) + "px, " + (-i * 1.5) + "px)";
+        cardBack.style.transform = "translate(" + (i * 1.5) + "px, " + (-i * 1.5) + "px) rotate(" + ((Math.random() * 4)-2) + "deg)";
         cardBack.addEventListener('click', ()=> {layingOutCards(i)});
     }
     fsBlue.innerHTML = idAncient.firstStage.blueCards;
@@ -379,9 +383,9 @@ function createDeck(){
 }
 
 function layingOutCards(index){
-    // console.log(deckArr);
+    console.log(deckArr);
     let cardItems = deckContainer.childNodes;
-    cardItems[index].style.transform = "translate(" + (-10 - (index*3.5)) + "vw, 40vh)"
+    cardItems[index].style.transform = "translate(" + (-10 - (index*3.5)) + "vw, 40vh) rotate(" + ((Math.random() * 4)-2) + "deg)";
     cardItems[index].style.zIndex = "" + (0-index) + "";
             if (deckArr[0].length !== 0) {
                 let rand = getRandomNum(deckArr[0].length)
@@ -407,8 +411,4 @@ function layingOutCards(index){
                 if( deckArr[2][rand].color === 'brown') tsBrown.innerHTML = (tsBrown.innerHTML - 1);
                 deckArr[2].splice(rand, 1)
             }
-}
-
-function changeTracker(stage, color){
-if(stage === 0 && color === blue) fsBlue.innerHTML = fsBlue.innerHTML - 1;
 }

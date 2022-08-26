@@ -1,6 +1,22 @@
+@font-face {
+    font-family: 'CrazyGuy';
+    src: url("../assets/fonts/CrazyGuy-lRzX.ttf");
+   }
+
+   @font-face {
+    font-family: 'Wrong';
+    src: url("../assets/fonts/WrongFreeTrial-vm2pM.otf");
+   }
+
+   @font-face {
+    font-family: 'Butcher';
+    src: url("../assets/fonts/ButcherTheBaker-R8RA.ttf");
+   }
+
 body{
     background-image: url(/assets/home.png);
     background-size:cover;
+    background-blend-mode: multiply;
 }
 
 main{
@@ -73,11 +89,16 @@ main{
     position: absolute;
     top: 5vh;
     left: 35vw;
-    width: 30vw;
+    width: 35vw;
     height: 30vh;
     background-color: rgba(0, 0, 0, 0.466);
     border-radius: 10px;
     color: #fff;
+    font-size: 24px;
+    font-family: 'Butcher';
+    letter-spacing: 3px;
+    box-shadow: inset 0px 0px 10px 5px #000;
+    opacity: 0;
 }
 
 .firstStage, .secondStage, .thirdStage{
@@ -87,7 +108,7 @@ main{
     width: 91%;
     height: 26%;
     padding-left: 5%;
-    background-color: rgba(255, 255, 255, 0.39);
+    /* background-color: rgba(255, 255, 255, 0.39); */
     justify-content: space-between;
 }
 
@@ -116,7 +137,9 @@ main{
     height: 35px;
     border-radius: 7px;
     text-align: center;
-    font-size: 32px;
+    font-size: 18px;
+    /* font: 1em CrazyGuy; */
+    font-family: 'CrazyGuy';
     padding: 5px;
     /* margin: 25px; */
 }
@@ -130,16 +153,26 @@ footer{
     /* height: 100px; */
     width: 100vw;
     padding-bottom: 40px;
-    background-color: rgba(43, 26, 116, 0.336);
+    /* background-color: rgba(42, 26, 116, 0.877); */
+}
+
+.btnLevelHide{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* background-color: rgba(255, 255, 255, 0.534);s */
+    /* transform: rotate(90deg); */
 }
 
 .btnLevel{
     width: 200px;
-    /* height: 50px; */
+    height: 20px;
     margin: 10px;
     border-radius: 10px;
     color: #fff;
     text-align: center;
+    font-family: 'Wrong';
+    font-size: 24px;
     padding: 10px;
     
     background: rgba(0, 0, 0, 0.397);
