@@ -1,71 +1,68 @@
 @font-face {
     font-family: 'CrazyGuy';
     src: url("../assets/fonts/CrazyGuy-lRzX.ttf");
-   }
+}
 
-   @font-face {
+@font-face {
     font-family: 'Wrong';
     src: url("../assets/fonts/WrongFreeTrial-vm2pM.otf");
-   }
+}
 
-   @font-face {
+@font-face {
     font-family: 'Butcher';
     src: url("../assets/fonts/ButcherTheBaker-R8RA.ttf");
-   }
+}
 
-body{
+body {
     background-image: url(/assets/home.png);
-    background-size:cover;
+    background-size: cover;
     background-blend-mode: multiply;
 }
 
-main{
-    /* background-color: rgba(255, 255, 255, 0.432); */
+main {
+    position: relative;
     height: 83vh;
 }
 
-.ancientsContainer{
-    position: relative;
-    top: 25vh;
-    /* left: calc((100vw - 500px)/2); */
+.ancientsContainer {
     align-items: center;
-    /* background-color: rgb(158, 18, 18); */
     display: flex;
     justify-content: center;
     width: 100%;
-    height: 300px;
+    height: 100%;
 }
 
-.ancCard{
+.ancCard {
     width: 200px;
     height: 260px;
     margin: 20px;
-    /* background-color: rgb(163, 98, 98); */
     background-size: cover;
     box-shadow: 0px 0px 5px 3px #000;
     border-radius: 5px;
-    transition: 0.5s;
 }
 
-.ancCardSelect{
-    position: absolute;
-    top: -25vh;
-    left: 0%;
-    transition: 4s;
+.ancCard:hover {
+    width: 240px;
+    height: 312px;
+    position: relative;
+    box-shadow: 0px 0px 10px 3px rgb(87, 10, 10);
+    border: #000 solid 1px;
 }
 
-.deckContainer{
+.ancCardSelect {
+    position: relative;
+}
+
+.deckContainer {
     position: absolute;
     margin: 20px;
     top: 0;
     right: 0%;
     width: 200px;
     height: 260px;
-    /* background-color: #fff; */
-    /* transform: s; */
 }
 
-.cardsShirt{
+.cardsShirt {
     position: absolute;
     margin: 20px;
     top: 0;
@@ -74,21 +71,17 @@ main{
     height: 260px;
     box-shadow: 0px 0px 5px 3px #000;
     border-radius: 5px;
-    background-image: url(/assets/mythicCardBackground.png);
     background-size: cover;
     border-left: rgb(129, 129, 129) solid 1px;
     border-bottom: rgb(128, 128, 128) solid 1px;
-    /* background-color: rgb(167, 42, 42); */
+    transform-origin: 50%;
+    /* transition: 1s; */
 }
-/* 
-.cardFace{
-    transform: translate(-80px);
-} */
 
-.trecker{
+.trecker {
     position: absolute;
     top: 5vh;
-    left: 35vw;
+    left: 32.5vw;
     width: 35vw;
     height: 30vh;
     background-color: rgba(0, 0, 0, 0.466);
@@ -99,20 +92,22 @@ main{
     letter-spacing: 3px;
     box-shadow: inset 0px 0px 10px 5px #000;
     opacity: 0;
+    z-index: -1;
 }
 
-.firstStage, .secondStage, .thirdStage{
+.firstStage,
+.secondStage,
+.thirdStage {
     display: flex;
     flex-direction: row;
     margin: 2%;
     width: 91%;
     height: 26%;
     padding-left: 5%;
-    /* background-color: rgba(255, 255, 255, 0.39); */
     justify-content: space-between;
 }
 
-.colorContainer{
+.colorContainer {
     display: flex;
     width: 20vw;
     align-items: center;
@@ -120,51 +115,51 @@ main{
     justify-content: space-around;
 }
 
-.fsBlue, .ssBlue, .tsBlue{
+.fsBlue,
+.ssBlue,
+.tsBlue {
     background-color: blue;
 }
 
-.fsGreen, .ssGreen, .tsGreen{
+.fsGreen,
+.ssGreen,
+.tsGreen {
     background-color: green;
 }
 
-.fsBrown, .ssBrown, .tsBrown{
+.fsBrown,
+.ssBrown,
+.tsBrown {
     background-color: brown;
 }
 
-.colorContainer div{
+.colorContainer div {
     width: 35px;
     height: 35px;
     border-radius: 7px;
     text-align: center;
     font-size: 18px;
-    /* font: 1em CrazyGuy; */
     font-family: 'CrazyGuy';
     padding: 5px;
-    /* margin: 25px; */
+    box-shadow: inset 0px 0px 15px 5px #000;
 }
 
-footer{
+footer {
     position: absolute;
     bottom: 0px;
     display: flex;
     justify-content: center;
-    /* background-color: #fff; */
-    /* height: 100px; */
     width: 100vw;
     padding-bottom: 40px;
-    /* background-color: rgba(42, 26, 116, 0.877); */
 }
 
-.btnLevelHide{
+.btnLevelHide {
     position: absolute;
     width: 100%;
     height: 100%;
-    /* background-color: rgba(255, 255, 255, 0.534);s */
-    /* transform: rotate(90deg); */
 }
 
-.btnLevel{
+.btnLevel {
     width: 200px;
     height: 20px;
     margin: 10px;
@@ -174,8 +169,12 @@ footer{
     font-family: 'Wrong';
     font-size: 24px;
     padding: 10px;
-    
+    cursor: pointer;
     background: rgba(0, 0, 0, 0.397);
-  box-shadow:  0px 3px 5px 3px rgba(0,0,0,1),  0px -1.5px 4px 3px rgba(255, 255, 255, 1), inset 0px 1.5px 3px 1px rgba(255, 255, 255, 1), inset 0px -3px 1px 0px rgba(0, 0, 0, 1);
-  
+    box-shadow: 0px 3px 5px 3px rgba(0, 0, 0, 1), 0px -1.5px 4px 3px rgba(255, 255, 255, 1), inset 0px 1.5px 3px 1px rgba(255, 255, 255, 1), inset 0px -3px 1px 0px rgba(0, 0, 0, 1);
+}
+
+.btnLevel:hover {
+    box-shadow: 0px 0px 15px 3px rgb(138, 10, 10), inset 0px 1.5px 3px 1px rgba(255, 255, 255, 1), inset 0px -3px 1px 0px rgba(0, 0, 0, 1);
+    color: rgb(138, 10, 10);
 }
