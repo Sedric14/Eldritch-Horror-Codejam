@@ -378,7 +378,7 @@ function createDeck() {
             const cardBack = document.createElement('div');
             cardBack.classList.add('cardsShirt');
             deckContainer.append(cardBack);
-            cardBack.style.backgroundImage = "url(/assets/mythicCardBackground.png)"
+            cardBack.style.backgroundImage = "url(./assets/mythicCardBackground.png)"
             cardBack.style.transform = "translate(" + (i * 1.5) + "px, " + (-i * 1.5) + "px) rotate(" + ((Math.random() * 4) - 2) + "deg)";
             cardBack.addEventListener('click', () => { layingOutCards(i) });
         }, 70 * (i + 1))
