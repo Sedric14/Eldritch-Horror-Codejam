@@ -49,9 +49,7 @@ main {
     border: #000 solid 1px;
 }
 
-.ancCardSelect {
-    position: relative;
-}
+.ancCardSelect { position: relative;}
 
 .deckContainer {
     position: absolute;
@@ -75,7 +73,6 @@ main {
     border-left: rgb(129, 129, 129) solid 1px;
     border-bottom: rgb(128, 128, 128) solid 1px;
     transform-origin: 50%;
-    /* transition: 1s; */
 }
 
 .trecker {
